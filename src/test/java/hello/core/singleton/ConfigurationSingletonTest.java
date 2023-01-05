@@ -33,7 +33,9 @@ public class ConfigurationSingletonTest {
 
         assertThat(memberService.getMemberRepository()).isSameAs(memberRepository);
         assertThat(orderService.getMemberRepository()).isSameAs(memberRepository);
-        // 다른 것이 생성되는 것이 아닌 같은 것으로 생성되는 것이 진짜 맞을까?
+        // 다른 것이 생성되는 것이 아닌 같은 것으로
+        // 생성되는 것이 진짜 맞을까?
+
     }
 
     @Test
