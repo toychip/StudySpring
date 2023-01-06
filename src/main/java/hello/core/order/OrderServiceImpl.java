@@ -16,6 +16,9 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     // memberRepository에서 회원 찾아야하니까 memberRepository가 필요함
     private final DiscountPolicy discountPolicy;
+
+     // private final 말고도 그 앞에 Autowired를 붙여서 사용 가능하다.
+    // private final 은 값을 무조건 지정 해줘! 라는 뜻임
     // 고정 할인 정책
 
     @Autowired
@@ -24,6 +27,12 @@ public class OrderServiceImpl implements OrderService{
         this.discountPolicy = discountPolicy;
     }
     // 인터페이스에만 의존하도록 코드를 변경함
+    //생성자 주입은 불변할때 사용, 딱 1번만 사용이 됨, 그 이유는 싱글톤이기 때문
+
+    //수정자 주입: setDiscountPolicy를 사용함 값을 바꿀때 사용
+    // 선택적이며 변경 가능하다. @Autowired(required = false)를 사용하여 선택 할 수 있음.
+    // @Autowired으 ㅣ기본 동작은 주입할 대상이 없으면 오류가 발생한다.
+    // 주입할 대상이 없어도 동작하게 하려면 @Autowired(required = false)로 지정하면 된다.
 
 
     // FixDiscountPolicy를 RateDiscountPolicy로 변경하는 순간 OrderServiceImpl의 소스 코드도 함게 변경해야한다. OCP위반

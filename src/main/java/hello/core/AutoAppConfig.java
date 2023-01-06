@@ -1,5 +1,12 @@
 package hello.core;
 
+import hello.core.discount.DiscountPolicy;
+import hello.core.member.MemberRepository;
+import hello.core.member.MemoryMemberRepository;
+import hello.core.order.OrderService;
+import hello.core.order.OrderServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -12,4 +19,10 @@ import org.springframework.context.annotation.FilterType;
         // 그동안 작성한 예제를 안전하게 유지하기 위해서 뺏다
 )
 public class AutoAppConfig {
+
+//    @Bean(name = "memoryMemberRepository")
+//    MemberRepository memberRepository(){
+//        return new MemoryMemberRepository();
+//    }
+
 }

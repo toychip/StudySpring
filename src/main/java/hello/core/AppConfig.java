@@ -53,6 +53,7 @@ public class AppConfig { // 어플리케이션 전체 설정, 구성
 
         System.out.println("AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
+//        return null;
     }
 
     @Bean
