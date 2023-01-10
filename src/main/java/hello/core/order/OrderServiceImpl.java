@@ -7,25 +7,37 @@ import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
+// @RequiredArgsConstructor
+// final이 붙은 것들은 무조건 필수값이된다, Requiredarg 즉 필수값들은 생성자들을 만들어주는 애노테이션이다.
+
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
     // memberRepository에서 회원 찾아야하니까 memberRepository가 필요함
     private final DiscountPolicy discountPolicy;
 
+//    @Autowired
+//    private DiscountPolicy rateDiscountPolicy;
+
+
      // private final 말고도 그 앞에 Autowired를 붙여서 사용 가능하다.
     // private final 은 값을 무조건 지정 해줘! 라는 뜻임
     // 고정 할인 정책
 
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    @Autowired       //생성자가 하나면 생략 가능
+    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;      // fix인지 rate인지 모름, app config가 던져줌.
         this.discountPolicy = discountPolicy;
     }
+//    @RequiredArgsConstructor 를 사용하였으므로  생성자를 쓰면 오류임
+
+
     // 인터페이스에만 의존하도록 코드를 변경함
     //생성자 주입은 불변할때 사용, 딱 1번만 사용이 됨, 그 이유는 싱글톤이기 때문
 

@@ -61,12 +61,6 @@ public class ApplicationContextExtendsFindTest {
         }
     }
 
-
-
-
-
-
-
     @Configuration
     static class TestConfig {
         @Bean
