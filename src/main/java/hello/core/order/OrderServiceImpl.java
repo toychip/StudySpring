@@ -1,5 +1,6 @@
 package hello.core.order;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 // import hello.core.discount.FixDiscountPolicy;
 import hello.core.discount.FixDiscountPolicy;
@@ -30,8 +31,13 @@ public class OrderServiceImpl implements OrderService{
     // private final 은 값을 무조건 지정 해줘! 라는 뜻임
     // 고정 할인 정책
 
+    // @Qualifier 정리
+    // 1. @Qualifier 끼리 매칭된다.
+    // 2. 빈 이름 매칭
+    // 3. NoSuchBeanDefinitionException 예외 발생한다. @Qualifier("mainDiscountPolicy")
+
     @Autowired       //생성자가 하나면 생략 가능
-    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;      // fix인지 rate인지 모름, app config가 던져줌.
         this.discountPolicy = discountPolicy;
     }

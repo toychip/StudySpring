@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@Qualifier("fixDiscountPolicy")
+//@Qualifier("fixDiscountPolicy")
 public class FixDiscountPolicy implements DiscountPolicy{
     //정액할인 정책
-
-
     private int discountFixAmount = 1000; // 1000원 할인
 
     @Override
