@@ -38,7 +38,7 @@ public class ResponseHeaderServlet extends HelloServlet {
         //Content-Type: text/plain;charset=utf-8
         //Content-Length: 2
 //        response.setHeader("Content-Type", "text/plain;charset=utf-8");
-        response.setContentType("text/plain");
+        response.setContentType("text/plain");      // 위와 같은 내용
         response.setCharacterEncoding("utf-8");
 //        response.setContentLength(2); //(생략시 자동 생성)
     }

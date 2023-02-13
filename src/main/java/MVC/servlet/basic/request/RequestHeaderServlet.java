@@ -14,6 +14,9 @@ public class RequestHeaderServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         printStartLine(request);
+        printHeaders(request);
+        printHeaderUtils(request);
+        printEtc(request);
     }
 
     private static void printStartLine(HttpServletRequest request) {
@@ -82,7 +85,7 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println();
     }
 
-    //기타 정보
+    //기타 정보 n
     private void printEtc(HttpServletRequest request) {
         System.out.println("--- 기타 조회 start ---");
 
