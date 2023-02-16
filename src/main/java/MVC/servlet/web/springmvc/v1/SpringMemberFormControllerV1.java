@@ -8,6 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class SpringMemberFormControllerV1 {
 
     @RequestMapping("/springmvc/v1/members/new-form")
+    // @RequestMapping -> RequestMappingHandlerMapping,
+//                        RequestMappingHandlerAdapter
     public ModelAndView process(){
         return new ModelAndView("new-form");
     }
