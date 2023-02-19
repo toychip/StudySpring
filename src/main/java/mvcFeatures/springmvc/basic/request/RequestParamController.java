@@ -25,7 +25,10 @@ public class RequestParamController {
         response.getWriter().write("ok");
     }
 
-    @ResponseBody                           // @ResponseBody를 활용하여 HttpServlet의 request.get~ 이런거 사용 안해도 됨
+    @ResponseBody
+//            @ResponseBody를 활용하여 return을 간단하게 정할 수 있음.
+//            response.getWriter().write("ok"); -> return "ok"; 로 간단 변환
+
     @RequestMapping("/request-param-v2")    // 입력값을 다른 이름의 변수에 담기 가능. username으로 받은 값을 memberName에다가 넣음.
     public String requestParamV2(@RequestParam("username") String memberName, @RequestParam("age") int memberAge){
         log.info("username={}, age={}", memberName, memberAge);
