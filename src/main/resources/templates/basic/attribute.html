@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>속성 설정</h1>
+<input type="text" name="mock" th:name="userA" />
+<!--   mock이 들어있는 name에다가 userA로 바꿔준다. 치환이 된다. -->
+<h1>속성 추가</h1>
+- th:attrappend = <input type="text" class="text" th:attrappend="class=' large'" /><br/>
+<!--^뒤에다가 붙임-->
+- th:attrprepend = <input type="text" class="text" th:attrprepend="class='large '" /><br/>
+<!--^앞에다가 붙임-->
+- th:classappend = <input type="text" class="text" th:classappend="large" /><br/>
+<!--large라는 내용을 class에 적절하게 추가할거야.-->
+
+
+<h1>checked 처리</h1>
+- checked o <input type="checkbox" name="active" th:checked="true" /><br/>
+- checked x <input type="checkbox" name="active" th:checked="false" /><br/>
+- checked=false <input type="checkbox" name="active" checked="false" /><br/>
+<!--html은 checked라는 속성만 있으면 체크가 되어버린다. th를 넣어서 boolean 로직을 이용한다. th 붙어있는건 파일로 열었을땐 뭔지 모른다. -->
+
+</body>
+</html>
