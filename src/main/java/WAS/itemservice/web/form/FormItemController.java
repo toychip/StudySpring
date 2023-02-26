@@ -33,11 +33,13 @@ public class FormItemController {
     }
 
     @GetMapping("/add")
-    public String addForm(){
+    public String addForm(Model model){
+        model.addAttribute("item", new Item());
         return "form/addForm";
     }
                 // --- 같은 url로 들어오더라도 get, post에 따라 호출되는 메서드가 다르게 설정 ---
 //    @PostMapping("/add")
+
     public String addItemV1(@RequestParam String itemName,
                        @RequestParam int price,     // 여기서는 int 와 Integer 중 아무거나 사용해도 된다.
                        @RequestParam Integer quantity,
