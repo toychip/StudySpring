@@ -1,14 +1,13 @@
 package WAS.itemservice.domain;
 
-import org.assertj.core.api.Assertions;
+import WAS.itemservice.domain.item.Item;
+import WAS.itemservice.domain.item.ItemRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ItemRepositoryTest {
 

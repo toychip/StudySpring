@@ -1,4 +1,4 @@
-package WAS.itemservice.domain;
+package WAS.itemservice.domain.item;
 
 import org.springframework.stereotype.Repository;
 

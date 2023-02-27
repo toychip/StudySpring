@@ -1,8 +1,8 @@
 package WAS.itemservice;
 
 
-import WAS.itemservice.domain.Item;
-import WAS.itemservice.domain.ItemRepository;
+import WAS.itemservice.domain.item.Item;
+import WAS.itemservice.domain.item.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
