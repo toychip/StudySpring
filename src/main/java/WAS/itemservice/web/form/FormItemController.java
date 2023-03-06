@@ -17,63 +17,63 @@ import java.util.*;
 
 @Slf4j
 @Controller
-@RequestMapping("/form/items")
+@RequestMapping("/message/items")
 @RequiredArgsConstructor
 public class FormItemController {
     private final ItemRepository itemRepository;
 
-    @ModelAttribute("regions")
-    public Map<String, String> regions(){
-
-        Map<String, String> regions = new LinkedHashMap<>();
-        regions.put("SEOUL", "서울"); // SEOUL 은 식별하는 키, 서울은 사용자에게 단순히 보영주기 위한 키
-        regions.put("BUSAN", "부산");
-        regions.put("JEJU", "제주");
-        return regions;
-
-//        똑같은 코드를 여러번 하는 것이 싫으므로 위에서 생성 후 자동 반환
-//        이렇게 선언을 하면 해당 컨트롤러를 요청할때 'regions' 에서 반환한 값이 자동으로 모델('model')에 담기게 된다.
-    }
-
-    @ModelAttribute("itemTypes")
-    public ItemType[] itemTypes(){
-
-        // enum 형식을 .values 를 사용하면 enum 에 있는 값들을 배열로 넘겨줌
-//        ItemType[] values = ItemType.values();
-//        return values;
-//      이를 inline으로 한줄로 해서 리턴
-        return ItemType.values();
-    }
-
-
-    @ModelAttribute("deliveryCodes")
-    public List<DeliveryCode> deliveryCodes(){
-        List<DeliveryCode> deliveryCodes = new ArrayList<>();
-        deliveryCodes.add(new DeliveryCode("FAST", "빠른배송"));
-        deliveryCodes.add(new DeliveryCode("NORMAL", "일반배송"));
-        deliveryCodes.add(new DeliveryCode("SLOW", "느린배송"));
-        return deliveryCodes;
-    }
+//    @ModelAttribute("regions")
+//    public Map<String, String> regions(){
+//
+//        Map<String, String> regions = new LinkedHashMap<>();
+//        regions.put("SEOUL", "서울"); // SEOUL 은 식별하는 키, 서울은 사용자에게 단순히 보영주기 위한 키
+//        regions.put("BUSAN", "부산");
+//        regions.put("JEJU", "제주");
+//        return regions;
+//
+////        똑같은 코드를 여러번 하는 것이 싫으므로 위에서 생성 후 자동 반환
+////        이렇게 선언을 하면 해당 컨트롤러를 요청할때 'regions' 에서 반환한 값이 자동으로 모델('model')에 담기게 된다.
+//    }
+//
+//    @ModelAttribute("itemTypes")
+//    public ItemType[] itemTypes(){
+//
+//        // enum 형식을 .values 를 사용하면 enum 에 있는 값들을 배열로 넘겨줌
+////        ItemType[] values = ItemType.values();
+////        return values;
+////      이를 inline으로 한줄로 해서 리턴
+//        return ItemType.values();
+//    }
+//
+//
+//    @ModelAttribute("deliveryCodes")
+//    public List<DeliveryCode> deliveryCodes(){
+//        List<DeliveryCode> deliveryCodes = new ArrayList<>();
+//        deliveryCodes.add(new DeliveryCode("FAST", "빠른배송"));
+//        deliveryCodes.add(new DeliveryCode("NORMAL", "일반배송"));
+//        deliveryCodes.add(new DeliveryCode("SLOW", "느린배송"));
+//        return deliveryCodes;
+//    }
 
     @GetMapping
     public String items(Model model){
         List<Item> items = itemRepository.findAll();
         model.addAttribute("items", items);
-        return "form/items";
+        return "message/items";
     }
 
     @GetMapping("/{itemId}")
     public String item(@PathVariable long itemId, Model model){
         Item item = itemRepository.findById(itemId);
         model.addAttribute("item", item);
-        return "form/item";
+        return "message/item";
     }
 
     @GetMapping("/add")
     public String addForm(Model model){
         model.addAttribute("item", new Item());
 
-        return "form/addForm";
+        return "message/addForm";
     }
                 // --- 같은 url로 들어오더라도 get, post에 따라 호출되는 메서드가 다르게 설정 ---
 //    @PostMapping("/add")
@@ -128,24 +128,24 @@ public class FormItemController {
     public String addItemV5(Item item) {
         itemRepository.save(item);
         return "redirect:/form/items/" + item.getId();
-//                                          id를 그대로 사용하는 것은 매우 위험하므로 RedirectAttributes를 사용하는 것이 좋다.
+//
+//                                         id를 그대로 사용하는 것은 매우 위험하므로 RedirectAttributes를 사용하는 것이 좋다.
     }
 
 
     @PostMapping("/add")
-    public String addItem(Item item, RedirectAttributes redirectAttributes) {
-        log.info("item.open={}", item.getOpen());
-        log.info("item.regions={}", item.getRegions());
-        log.info("item.itemType={}", item.getItemType());
+    public String addItem(Item itemId, RedirectAttributes redirectAttributes) {
+//        log.info("item.open={}", item.getOpen());
+//        log.info("item.regions={}", item.getRegions());
+//        log.info("item.itemType={}", item.getItemType());
 
-
-
-        Item saveItem = itemRepository.save(item);
-        redirectAttributes.addAttribute("itemId", saveItem.getId());
+//        Item item = itemRepository.save(item);
+        Item item = itemRepository.save(itemId);
+        redirectAttributes.addAttribute("item", item);
 //        ^에서 redirectAttributes.addAttribute 사용하여 아래 return에 itemId에 값을 넣은 것으로 치환해서 리턴한다.
         redirectAttributes.addAttribute("status", true);
         // ^는 쿼리 파라미터 ?status=true로 넘어가게 된다.
-        return "redirect:/form/items/{itemId}";
+        return "redirect:/message/items/{itemId}";
     }
 
     // 상품 수정 폼
@@ -154,13 +154,13 @@ public class FormItemController {
         Item item = itemRepository.findById(itemId);
         model.addAttribute("item", item);
 
-        return "form/editForm";
+        return "message/editForm";
     }
 
     @PostMapping("/{itemId}/edit")       // Long <-> long 차이, Long은 null 가능, long은 불가능
     public String edit(@PathVariable Long itemId, @ModelAttribute Item item){
         itemRepository.update(itemId, item);
-        return "redirect:/form/items/{itemId}";
+        return "redirect:/message/items/{itemId}";
         // GET -> 상품 수정 폼
         // POST -> 상품 수정 처리
     }
@@ -168,10 +168,10 @@ public class FormItemController {
     /*
     테스트용 데이터 추가
      */
-    @PostConstruct
-    public void init(){
-        itemRepository.save(new Item("itemA", 10000, 10));
-        itemRepository.save(new Item("itemB", 20000, 20));
-    }
+//    @PostConstruct
+//    public void init(){
+//        itemRepository.save(new Item("itemA", 10000, 10));
+//        itemRepository.save(new Item("itemB", 20000, 20));
+//    }
 
 }
