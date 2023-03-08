@@ -72,7 +72,6 @@ public class FormItemController {
     @GetMapping("/add")
     public String addForm(Model model){
         model.addAttribute("item", new Item());
-
         return "message/addForm";
     }
                 // --- 같은 url로 들어오더라도 get, post에 따라 호출되는 메서드가 다르게 설정 ---
@@ -141,7 +140,8 @@ public class FormItemController {
 
 //        Item item = itemRepository.save(item);
         Item item = itemRepository.save(itemId);
-        redirectAttributes.addAttribute("item", item);
+//        redirectAttributes.addAttribute("item", item);
+        redirectAttributes.addAttribute("itemId", item.getId());
 //        ^에서 redirectAttributes.addAttribute 사용하여 아래 return에 itemId에 값을 넣은 것으로 치환해서 리턴한다.
         redirectAttributes.addAttribute("status", true);
         // ^는 쿼리 파라미터 ?status=true로 넘어가게 된다.
