@@ -17,7 +17,7 @@ import java.util.*;
 
 @Slf4j
 @Controller
-@RequestMapping("/message/items")
+@RequestMapping("/validation/v1/items")
 @RequiredArgsConstructor
 public class FormItemController {
     private final ItemRepository itemRepository;
@@ -59,20 +59,20 @@ public class FormItemController {
     public String items(Model model){
         List<Item> items = itemRepository.findAll();
         model.addAttribute("items", items);
-        return "message/items";
+        return "validation/v1/items";
     }
 
     @GetMapping("/{itemId}")
     public String item(@PathVariable long itemId, Model model){
         Item item = itemRepository.findById(itemId);
         model.addAttribute("item", item);
-        return "message/item";
+        return "validation/v1/item";
     }
 
     @GetMapping("/add")
     public String addForm(Model model){
         model.addAttribute("item", new Item());
-        return "message/addForm";
+        return "validation/v1/addForm";
     }
                 // --- 같은 url로 들어오더라도 get, post에 따라 호출되는 메서드가 다르게 설정 ---
 //    @PostMapping("/add")
@@ -145,7 +145,7 @@ public class FormItemController {
 //        ^에서 redirectAttributes.addAttribute 사용하여 아래 return에 itemId에 값을 넣은 것으로 치환해서 리턴한다.
         redirectAttributes.addAttribute("status", true);
         // ^는 쿼리 파라미터 ?status=true로 넘어가게 된다.
-        return "redirect:/message/items/{itemId}";
+        return "redirect:/validation/v1/items/{itemId}";
     }
 
     // 상품 수정 폼
@@ -154,13 +154,13 @@ public class FormItemController {
         Item item = itemRepository.findById(itemId);
         model.addAttribute("item", item);
 
-        return "message/editForm";
+        return "validation/v1/editForm";
     }
 
     @PostMapping("/{itemId}/edit")       // Long <-> long 차이, Long은 null 가능, long은 불가능
     public String edit(@PathVariable Long itemId, @ModelAttribute Item item){
         itemRepository.update(itemId, item);
-        return "redirect:/message/items/{itemId}";
+        return "redirect:/validation/v1/items/{itemId}";
         // GET -> 상품 수정 폼
         // POST -> 상품 수정 처리
     }
