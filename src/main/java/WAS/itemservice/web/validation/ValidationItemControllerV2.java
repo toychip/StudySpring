@@ -47,6 +47,7 @@ public class ValidationItemControllerV2 {
                 // --- 같은 url로 들어오더라도 get, post에 따라 호출되는 메서드가 다르게 설정 ---
 
     @PostMapping("/add")        // BindingResult -> Item에 Binding된 결과가 bindingResult에 담김 == 잘 안담기고 오류가 생긴다면 bindingresult에 담김
+//    또한 bindingResult가 있으면 오류가 났을때 바로 400 페이지로 가는것이 아닌 어떠한 오류가 났는지 bindingResult에 담고 전달하며, 바로 오류페이지가 아닌 우선 컨트롤러가 호출이된다.
     public String addItemV1(@ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
 //        log.info("item.open={}", item.getOpen());
 
