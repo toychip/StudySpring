@@ -11,6 +11,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -230,12 +231,14 @@ public class ValidationItemControllerV2 {
         // Validation Error 보관
 //        Map<String, String> errors = new HashMap<>(); [ BindingResult 사용 후 이것 사용 x]
 
+//        ValidationUtils.rejectIfEmptyOrWhitespace(bindingResult, "itemName", "required");
+//      아래와 같은 의미간단한 공백이나 값이 안들어올때,
         // Validation Logic
         if (!StringUtils.hasText(item.getItemName())){
             bindingResult.rejectValue("itemName", "required");
-//            메시지에 등록된 오류코드가 아님. 뒤에 나올 messageResolver를 위한 오류 코드
-//            일단 errorCode -> Object명 field명 조합해서 만들어준다고 생각하기.
-        }
+////            메시지에 등록된 오류코드가 아님. 뒤에 나올 messageResolver를 위한 오류 코드
+////            일단 errorCode -> Object명 field명 조합해서 만들어준다고 생각하기.
+//        }
 
         if (item.getPrice() == null || item.getPrice() < 1000 || item.getPrice()>1000000) {
 //            errors.put("price", "가격은 1,000 ~ 1,000,000까지 허용합니다. ");                                                                                             파라미터 변수 값
