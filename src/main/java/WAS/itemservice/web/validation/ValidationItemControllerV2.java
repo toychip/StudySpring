@@ -25,6 +25,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ValidationItemControllerV2 {
     private final ItemRepository itemRepository;
+    private final ItemValidator itemValidator;
 
     @GetMapping
     public String items(Model model){
@@ -216,7 +217,7 @@ public class ValidationItemControllerV2 {
         return "redirect:/validation/v2/items/{itemId}";
     }
 
-    @PostMapping("/add")        // BindingResult -> Item에 Binding된 결과가 bindingResult에 담김 == 잘 안담기고 오류가 생긴다면 bindingresult에 담김
+//    @PostMapping("/add")        // BindingResult -> Item에 Binding된 결과가 bindingResult에 담김 == 잘 안담기고 오류가 생긴다면 bindingresult에 담김
 //    또한 bindingResult가 있으면 오류가 났을때 바로 400 페이지로 가는것이 아닌 어떠한 오류가 났는지 bindingResult에 담고 전달하며, 바로 오류페이지가 아닌 우선 컨트롤러가 호출이된다.
     public String addItemV4(@ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
 //             ** BindingResult에 내장되어 있는 rejactValue와 reject 도입 **
@@ -231,14 +232,14 @@ public class ValidationItemControllerV2 {
         // Validation Error 보관
 //        Map<String, String> errors = new HashMap<>(); [ BindingResult 사용 후 이것 사용 x]
 
-//        ValidationUtils.rejectIfEmptyOrWhitespace(bindingResult, "itemName", "required");
-//      아래와 같은 의미간단한 공백이나 값이 안들어올때,
+//        ValidationUtils.rejectIfEmptyOrWhitespace(bindingResult, "itemName", "required");    // 간단한 공백이나 값이 안들어올때
+//      if (!StringUtils.hasText(item.getItemName())와 같은 의미이다. Spring이 갖고 있는 것
         // Validation Logic
         if (!StringUtils.hasText(item.getItemName())){
             bindingResult.rejectValue("itemName", "required");
-////            메시지에 등록된 오류코드가 아님. 뒤에 나올 messageResolver를 위한 오류 코드
-////            일단 errorCode -> Object명 field명 조합해서 만들어준다고 생각하기.
-//        }
+//            메시지에 등록된 오류코드가 아님. 뒤에 나올 messageResolver를 위한 오류 코드
+//            일단 errorCode -> Object명 field명 조합해서 만들어준다고 생각하기.
+        }
 
         if (item.getPrice() == null || item.getPrice() < 1000 || item.getPrice()>1000000) {
 //            errors.put("price", "가격은 1,000 ~ 1,000,000까지 허용합니다. ");                                                                                             파라미터 변수 값
@@ -280,6 +281,27 @@ public class ValidationItemControllerV2 {
         return "redirect:/validation/v2/items/{itemId}";
     }
 
+    @PostMapping("/add")
+    public String addItemV5(@ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
+
+        itemValidator.validate(item, bindingResult);
+
+        // 검증 실패하면 다시 입력 폼으로, 실패 로직
+        if(bindingResult.hasErrors()){
+            log.info("errors = {}", bindingResult);
+            return "validation/v2/addForm";
+        }
+
+        // 성공 로직
+        Item savedItem = itemRepository.save(item);
+//        redirectAttributes.addAttribute("item", item);
+        redirectAttributes.addAttribute("itemId", item.getId());
+//        ^에서 redirectAttributes.addAttribute 사용하여 아래 return에 itemId에 값을 넣은 것으로 치환해서 리턴한다.
+        redirectAttributes.addAttribute("status", true);
+        // ^는 쿼리 파라미터 ?status=true로 넘어가게 된다.
+        return "redirect:/validation/v2/items/{itemId}";
+    }
+
     // 상품 수정 폼
     @GetMapping("/{itemId}/edit")       // Long <-> long 차이, Long은 null 가능, long은 불가능
     public String editForm(@PathVariable Long itemId, Model model){
@@ -296,5 +318,7 @@ public class ValidationItemControllerV2 {
         // GET -> 상품 수정 폼
         // POST -> 상품 수정 처리
     }
+
+
 
 }
