@@ -20,8 +20,13 @@ public class Item {
      */
 
     private Long id;
-//    @NotBlank(message = "공백x")    default 메시지 생성
+//    @NotBlank(message = "공백x")    default 메시지 생성:w
     @NotBlank
+    /*
+    에러 코드가 NotBlank.item.itemName 이런 방식으로 typeMisMatch 와 같은 논리로 동작한다.
+     */
+
+    @Range(min = 4, max =20)
     private String itemName;
 
     @NotNull
