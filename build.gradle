@@ -26,6 +26,13 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 //	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.graalvm.js:js:21.0.0.2'
+	implementation 'org.graalvm.js:js-scriptengine:21.0.0.2'
+/*
+Nashorn은 JDK 8에서 제공되지만, JDK 15에서는 제거되었다. GraalVM은 Oracle의 고성능 다중 언어 엔진이다.
+이를 사용하려면 GraalVM JDK를 설치해야하므로 의존성에 JSR-223 호환 스크립트 엔진을 추가했다.
+ */
+
 }
 
 tasks.named('test') {

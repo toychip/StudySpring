@@ -2,6 +2,7 @@ package WAS.itemservice.domain.item;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.ScriptAssert;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
@@ -10,6 +11,12 @@ import java.util.List;
 
 @Data //위험해서 사용하지 않는 것이 좋음. 데이터를 중간에 담아주는 DTO는 사용 가능
 //@Getter  @Setter
+
+// ObjectError 추가
+// 가격 * 수량 >= 10000 이어야 한다.
+
+//@ScriptAssert(lang = "javascript", script = "_this.price * _this.quantity >= 10000", // 복잡하고 대응이 어렵기 때문에실제 사용을 하지 않는다.
+//message = "총 합이 10000원 넘게 입력해주세요.")
 public class Item {
 
     /*
@@ -21,12 +28,12 @@ public class Item {
 
     private Long id;
 //    @NotBlank(message = "공백x")    default 메시지 생성:w
-    @NotBlank
+
     /*
     에러 코드가 NotBlank.item.itemName 이런 방식으로 typeMisMatch 와 같은 논리로 동작한다.
      */
-
-    @Range(min = 4, max =20)
+    @NotBlank(message = "공백x")
+//    @Range(min = 4, max =20)
     private String itemName;
 
     @NotNull

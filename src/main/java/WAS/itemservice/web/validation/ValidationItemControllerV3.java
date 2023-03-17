@@ -49,6 +49,15 @@ public class ValidationItemControllerV3 {
     public String addItem(@Validated @ModelAttribute Item item, BindingResult bindingResult,
                           RedirectAttributes redirectAttributes, Model model) {
 
+        if(item.getItemName()!=null && item.getQuantity() !=null){
+            int resultPrice = item.getPrice() * item.getQuantity();
+            if(resultPrice < 10000){
+//                errors.put("globalError", "가격 * 수량의 합은 10,000원 이상이어야 합니다. 현재 값 = " + resultPrice);
+                bindingResult.reject("totalPriceMin", new Object[]{10000, resultPrice}, null);
+                // Object는 넘어올 값이 없음. 실패할 확률도 없음
+            }
+        }
+
         // 검증 실패하면 다시 입력 폼으로, 실패 로직
         if (bindingResult.hasErrors()) {
             log.info("errors = {}", bindingResult);
@@ -58,7 +67,7 @@ public class ValidationItemControllerV3 {
         // 성공 로직
         Item savedItem = itemRepository.save(item);
 //        redirectAttributes.addAttribute("item", item);
-        redirectAttributes.addAttribute("itemId", item.getId());
+        redirectAttributes.addAttribute("itemId", savedItem.getId());
 //        ^에서 redirectAttributes.addAttribute 사용하여 아래 return에 itemId에 값을 넣은 것으로 치환해서 리턴한다.
         redirectAttributes.addAttribute("status", true);
         // ^는 쿼리 파라미터 ?status=true로 넘어가게 된다.
@@ -75,7 +84,22 @@ public class ValidationItemControllerV3 {
     }
 
     @PostMapping("/{itemId}/edit")       // Long <-> long 차이, Long은 null 가능, long은 불가능
-    public String edit(@PathVariable Long itemId, @ModelAttribute Item item) {
+    public String edit(@PathVariable Long itemId, @Validated @ModelAttribute Item item,BindingResult bindingResult) {
+
+        if(item.getItemName()!=null &&item.getQuantity() !=null){
+            int resultPrice = item.getPrice() * item.getQuantity();
+            if(resultPrice < 10000){
+//                errors.put("globalError", "가격 * 수량의 합은 10,000원 이상이어야 합니다. 현재 값 = " + resultPrice);
+                bindingResult.reject("totalPriceMin", new Object[]{10000, resultPrice}, null);
+                // Object는 넘어올 값이 없음. 실패할 확률도 없음
+            }
+        }
+
+        if(bindingResult.hasErrors()){
+            log.info("errors={}", bindingResult);
+            return "validation/v3/editForm";
+        }
+
         itemRepository.update(itemId, item);
         return "redirect:/validation/v3/items/{itemId}";
         // GET -> 상품 수정 폼
