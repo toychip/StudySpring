@@ -26,22 +26,23 @@ public class Item {
     Range           ->      범위 않의 값이어야 한다. min default = 0
      */
 
+    @NotNull(groups = UpdateCheck.class)    // 수정 요구사항으로 추가
     private Long id;
 //    @NotBlank(message = "공백x")    default 메시지 생성:w
 
     /*
     에러 코드가 NotBlank.item.itemName 이런 방식으로 typeMisMatch 와 같은 논리로 동작한다.
      */
-    @NotBlank(message = "공백x")
+    @NotBlank(groups = {SaveCheck.class, UpdateCheck.class})
 //    @Range(min = 4, max =20)
     private String itemName;
 
-    @NotNull
-    @Range(min = 1000, max = 1000000)
+    @NotNull(groups = {SaveCheck.class, UpdateCheck.class})
+    @Range(min = 1000, max = 1000000, groups = {SaveCheck.class, UpdateCheck.class})
     private Integer price;      // NULL이 못들어가므로 Integer 타입으로 선언
 
-    @NotNull
-    @Max(9999)
+    @NotNull(groups = {SaveCheck.class, UpdateCheck.class})
+    @Max(value = 9999, groups = {SaveCheck.class}) //수정 요구사항 추가
     private Integer quantity;
 
 
