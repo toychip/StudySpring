@@ -1,12 +1,10 @@
-package WAS.itemservice.web.validation;
+package WAS.itemservice.web.item.validation;
 
 
 import WAS.itemservice.domain.item.Item;
 import WAS.itemservice.domain.item.ItemRepository;
-import WAS.itemservice.domain.item.SaveCheck;
-import WAS.itemservice.domain.item.UpdateCheck;
-import WAS.itemservice.web.validation.form.ItemSaveForm;
-import WAS.itemservice.web.validation.form.ItemUpdateForm;
+import WAS.itemservice.web.item.form.ItemSaveForm;
+import WAS.itemservice.web.item.form.ItemUpdateForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

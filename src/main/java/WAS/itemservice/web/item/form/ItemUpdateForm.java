@@ -1,10 +1,8 @@
-package WAS.itemservice.web.validation.form;
+package WAS.itemservice.web.item.form;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -24,7 +22,6 @@ public class ItemUpdateForm {
     private Integer price;
 
     // 수정에서는 9999제한이 없다.
-    @NotNull
     private Integer quantity;
 
 //    @Email

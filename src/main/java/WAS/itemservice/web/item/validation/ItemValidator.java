@@ -1,4 +1,4 @@
-package WAS.itemservice.web.validation;
+package WAS.itemservice.web.item.validation;
 
 import WAS.itemservice.domain.item.Item;
 import org.springframework.stereotype.Component;

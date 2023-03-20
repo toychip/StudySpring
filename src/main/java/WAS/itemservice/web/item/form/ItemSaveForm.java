@@ -1,4 +1,4 @@
-package WAS.itemservice.web.validation.form;
+package WAS.itemservice.web.item.form;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;

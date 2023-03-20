@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>한반도 지도 검색</title>
+  <style>
+    .map-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .map {
+      width: 500px;
+      height: 800px;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/South_Korea_blank_map.svg/1280px-South_Korea_blank_map.svg.png');
+      background-size: cover;
+      position: relative;
+    }
+    .region {
+      position: absolute;
+      cursor: pointer;
+    }
+    .seoul { top: 20%; left: 45%; width: 4%; height: 4%; }
+    .gyeonggi { top: 22%; left: 40%; width: 8%; height: 8%; }
+    /* 나머지 지역의 CSS 위치 및 크기를 설정하세요. */
+  </style>
+</head>
+<body>
+<div class="map-container">
+  <div class="map">
+    <div class="region seoul" data-name="서울" onclick="searchRegion(event)"></div>
+    <div class="region gyeonggi" data-name="경기" onclick="searchRegion(event)"></div>
+    <!-- 나머지 지역을 추가하세요. -->
+  </div>
+</div>
+<script>
+    function searchRegion(event) {
+      const regionName = event.target.dataset.name;
+      const searchUrl = `https://search.naver.com/search.naver?query=${encodeURIComponent(regionName)}`;
+      window.open(searchUrl, '_blank');
+    }
+  </script>
+</body>
+</html>

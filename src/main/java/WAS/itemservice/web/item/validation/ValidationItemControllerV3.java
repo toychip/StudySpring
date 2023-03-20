@@ -1,4 +1,4 @@
-package WAS.itemservice.web.validation;
+package WAS.itemservice.web.item.validation;
 
 
 import WAS.itemservice.domain.item.Item;
@@ -7,12 +7,10 @@ import WAS.itemservice.domain.item.SaveCheck;
 import WAS.itemservice.domain.item.UpdateCheck;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lombok.val;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
