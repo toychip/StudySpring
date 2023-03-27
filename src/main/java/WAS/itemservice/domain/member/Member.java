@@ -1,6 +1,7 @@
 package WAS.itemservice.domain.member;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -11,6 +12,7 @@ public class Member {
 
     @NotEmpty
     @Email
+//    @UniqueElements
     private String loginId; // 사용자가 로그인할때 사용하는 id
 
     @NotEmpty
