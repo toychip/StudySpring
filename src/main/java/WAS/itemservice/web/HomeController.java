@@ -2,6 +2,7 @@ package WAS.itemservice.web;
 
 import WAS.itemservice.domain.member.Member;
 import WAS.itemservice.domain.member.MemberRepository;
+import WAS.itemservice.web.argumentresolver.Login;
 import WAS.itemservice.web.session.SessionManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -78,9 +79,23 @@ public class HomeController {
     }
 
 
-    @GetMapping("/")                                                                    // 값이 없을수도 있을수도 있으므로
+//    @GetMapping("/")                                                                    // 값이 없을수도 있을수도 있으므로
     public String homeLoginV3Spring(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
                                         Member loginMember, Model model){ // 여기서 reqired = false 란 이 파라미터를 필수 값으로 받을 것인지에 대한 설정임.
+
+        //로그인
+        //세션에 회원 데이터가 없으면 home
+        if(loginMember == null) { // db에 없는 경우, 쿠키가 너무 오래됐거나 등
+            return "home";
+        }
+
+        // 세션이 유지되면 로그인으로 이동
+        model.addAttribute("member", loginMember);
+        return "loginHome";
+    }
+
+    @GetMapping("/")                                                                    // 값이 없을수도 있을수도 있으므로
+    public String homeLoginV3ArgumentResolver(@Login Member loginMember, Model model){ // 여기서 reqired = false 란 이 파라미터를 필수 값으로 받을 것인지에 대한 설정임.
 
         //로그인
         //세션에 회원 데이터가 없으면 home
