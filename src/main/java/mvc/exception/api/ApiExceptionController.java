@@ -18,6 +18,11 @@ public class ApiExceptionController {
     // MemberDto의 객체를 받는데 그것의 id가 잘못되어있으면 == index가 없으면 ex가 터지므로 아래의 행동을 하겠다.
         throw new RuntimeException("잘못된 사용자");
         }
+
+        if (id.equals("bad")) {
+            throw new IllegalArgumentException("잘못된 입력 값");
+        }
+
         return new MemberDto(id, "hello " + id);
     }
 
