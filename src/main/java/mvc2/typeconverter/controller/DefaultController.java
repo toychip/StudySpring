@@ -1,9 +1,7 @@
 package mvc2.typeconverter.controller;
 
 import mvc2.typeconverter.type.IpPort;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -28,4 +26,7 @@ public class DefaultController {
         System.out.println("ipPort.getPort() = " + ipPort.getPort());
         return "ok";
     }
+
+
+
 }
