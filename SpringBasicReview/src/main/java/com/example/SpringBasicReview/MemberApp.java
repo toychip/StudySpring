@@ -1,9 +1,9 @@
 package com.example.SpringBasicReview;
 
-import com.example.SpringBasicReview.member.Grade;
-import com.example.SpringBasicReview.member.Member;
-import com.example.SpringBasicReview.member.MemberService;
-import com.example.SpringBasicReview.member.MemberServiceImpl;
+import com.example.SpringBasicReview.domain.Grade;
+import com.example.SpringBasicReview.domain.Member;
+import com.example.SpringBasicReview.service.MemberService;
+import com.example.SpringBasicReview.service.MemberServiceImpl;
 
 
 public class MemberApp {

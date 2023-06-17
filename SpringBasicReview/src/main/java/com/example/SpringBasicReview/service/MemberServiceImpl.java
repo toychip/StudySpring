@@ -1,4 +1,8 @@
-package com.example.SpringBasicReview.member;
+package com.example.SpringBasicReview.service;
+
+import com.example.SpringBasicReview.domain.Member;
+import com.example.SpringBasicReview.repository.MemberRepository;
+import com.example.SpringBasicReview.repository.MemoryMemberRepository;
 
 public class MemberServiceImpl implements MemberService{
 

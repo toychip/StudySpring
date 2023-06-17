@@ -1,9 +1,9 @@
-package com.example.SpringBasicReview.member;
+package com.example.SpringBasicReview.domain;
 
+import com.example.SpringBasicReview.service.MemberService;
+import com.example.SpringBasicReview.service.MemberServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
 
@@ -19,7 +19,7 @@ class MemberServiceTest {
     Member findMember = memberService.findMember(1L);
 
     //then
-        Assertions.assertThat(member).isEqualTo(findMember);
+    Assertions.assertThat(member).isEqualTo(findMember);
     }
 
 }

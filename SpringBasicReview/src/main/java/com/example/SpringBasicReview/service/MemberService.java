@@ -1,4 +1,6 @@
-package com.example.SpringBasicReview.member;
+package com.example.SpringBasicReview.service;
+
+import com.example.SpringBasicReview.domain.Member;
 
 public interface MemberService {
 

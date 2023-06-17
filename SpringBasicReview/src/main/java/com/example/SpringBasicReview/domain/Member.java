@@ -1,4 +1,4 @@
-package com.example.SpringBasicReview.member;
+package com.example.SpringBasicReview.domain;
 
 public class Member {
 
