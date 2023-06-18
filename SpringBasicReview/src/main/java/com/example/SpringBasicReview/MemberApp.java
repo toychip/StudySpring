@@ -9,7 +9,10 @@ import com.example.SpringBasicReview.service.MemberServiceImpl;
 public class MemberApp {
 
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
+
+        Appconfig appconfig = new Appconfig();
+        MemberService memberService = appconfig.memberService();
+//        MemberService memberService = new MemberServiceImpl();
         Member memberA = new Member(1L, "memberA", Grade.VIP);
         memberService.join(memberA);
 
