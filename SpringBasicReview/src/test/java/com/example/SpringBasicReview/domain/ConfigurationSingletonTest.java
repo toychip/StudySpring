@@ -5,13 +5,15 @@ import com.example.SpringBasicReview.repository.MemberRepository;
 import com.example.SpringBasicReview.service.MemberServiceImpl;
 import com.example.SpringBasicReview.service.OrderServiceImpl;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class ConfigurationSingletonTest {
     @Test
     void configurationTest() {
-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(Appconfig.class);
+        ApplicationContext ac = new AnnotationConfigApplicationContext(Appconfig.class);
 
         MemberServiceImpl memberService = ac.getBean("memberService", MemberServiceImpl.class);
         OrderServiceImpl orderService = ac.getBean("orderService", OrderServiceImpl.class);
@@ -27,5 +29,15 @@ public class ConfigurationSingletonTest {
 
         Assertions.assertThat(memberService.getMemberRepository()).isSameAs(memberRepository);
         Assertions.assertThat(orderService.getMemberRepository()).isSameAs(memberRepository);
+    }
+
+    @Test
+    @DisplayName("getClass")
+    void configurationDeep() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(Appconfig.class);
+        Appconfig bean = ac.getBean(Appconfig.class);
+
+        System.out.println("bean.getClass() = " + bean.getClass());
+
     }
 }

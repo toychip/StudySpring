@@ -12,7 +12,7 @@ import com.example.SpringBasicReview.service.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+@Configuration  // CHLIB이름을 붙인 가짜를 만들어서 생성
 public class Appconfig {
 
     @Bean
