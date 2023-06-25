@@ -3,6 +3,7 @@ package com.example.SpringBasicReview;
 import com.example.SpringBasicReview.discount.DiscountPolicy;
 import com.example.SpringBasicReview.discount.FixDiscountPolicy;
 import com.example.SpringBasicReview.discount.RateDiscountPolicy;
+import com.example.SpringBasicReview.repository.MemberRepository;
 import com.example.SpringBasicReview.repository.MemoryMemberRepository;
 import com.example.SpringBasicReview.service.MemberService;
 import com.example.SpringBasicReview.service.MemberServiceImpl;
@@ -16,18 +17,21 @@ public class Appconfig {
 
     @Bean
     public MemberService memberService() {
-        return new MemberServiceImpl(getMemberRepository());
+        System.out.println("call Appconfig.memberService");
+        return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public OrderService orderService() {
+        System.out.println("call Appconfig.orderService");
         return new OrderServiceImpl(
-                getMemberRepository(), getDiscountPolicy()
+                memberRepository(), getDiscountPolicy()
         );
     }
 
     @Bean
-    public MemoryMemberRepository getMemberRepository() {
+    public MemberRepository memberRepository() {
+        System.out.println("call Appconfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
