@@ -7,13 +7,15 @@ import com.example.SpringBasicReview.domain.Member;
 import com.example.SpringBasicReview.domain.Order;
 import com.example.SpringBasicReview.repository.MemberRepository;
 import com.example.SpringBasicReview.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-// lombok아 돌아와..
-//@RequiredConstruc.....
+@Component
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
