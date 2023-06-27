@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderServiceImpl implements OrderService{
 
-    private final MemberRepository memberRepository;
+    private final MemberRepository memberRepository;    // final을 사용하여 필수 값이라고 설정을 한것.
 
-    @Autowired
+    @Autowired  // 생성자가 하나일 경우 @Autowired 생략되어 있음. 자동으로 붙여 줌
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;

@@ -1,5 +1,8 @@
 package com.example.SpringBasicReview;
 
+import com.example.SpringBasicReview.repository.MemberRepository;
+import com.example.SpringBasicReview.repository.MemoryMemberRepository;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -16,6 +19,11 @@ import org.springframework.context.annotation.FilterType;
 // 수동으로 @Bean한게 없음
 public class AutoAppConfig {
 
+    @Bean(name = "memoryMemberRepository")  // overriding을 해서 수동 등록이 우선권을 가짐
+//                                              의도하지 않은 경우가 대부분
+    MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
 }
 
 
