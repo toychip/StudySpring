@@ -8,8 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class SpringBasicReviewApplicationTests {
 
-	@Autowired
-	OrderService orderService;	// 이런 식으로 테스트에서는 @Autowired 사용해도 괜찮음.
+//	@Autowired
+//	OrderService orderService;	// 이런 식으로 테스트에서는 @Autowired 사용해도 괜찮음.
 	@Test
 	void contextLoads() {
 	}

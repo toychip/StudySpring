@@ -19,11 +19,12 @@ import org.springframework.context.annotation.FilterType;
 // 수동으로 @Bean한게 없음
 public class AutoAppConfig {
 
-    @Bean(name = "memoryMemberRepository")  // overriding을 해서 수동 등록이 우선권을 가짐
-//                                              의도하지 않은 경우가 대부분
-    MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
-    }
+    // 같은 이름의 빈이 2개이므로 충돌 남, 학습용으로 공부했던 것이므로 주석처리
+//    @Bean(name = "memoryMemberRepository")  // overriding을 해서 수동 등록이 우선권을 가짐
+////                                              의도하지 않은 경우가 대부분
+//    MemberRepository memberRepository() {
+//        return new MemoryMemberRepository();
+//    }
 }
 
 

@@ -2,8 +2,10 @@ package com.example.SpringBasicReview.discount;
 
 import com.example.SpringBasicReview.domain.Grade;
 import com.example.SpringBasicReview.domain.Member;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+@Primary
 @Component
 public class RateDiscountPolicy implements DiscountPolicy{
 
