@@ -34,5 +34,5 @@ public class AutoWiredTest {
             System.out.println("setNoBean3 = " + member);
         }
     }
-    
+
 }
