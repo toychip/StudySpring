@@ -11,14 +11,14 @@ public class BeanLifeCycleTest {
 
     @Test
     public void lifeCycleTest() {
-        ConfigurableApplicationContext ac = new AnnotationConfigApplicationContext(NetworkClient.class);
+        ConfigurableApplicationContext ac = new AnnotationConfigApplicationContext(LifeCycleConfig.class);
         NetworkClient bean = ac.getBean(NetworkClient.class);
 
         ac.close();
     }
 
     @Configuration
-    static class lifeCycleCOnfig{
+    static class LifeCycleConfig{
 
         @Bean
         public NetworkClient networkClient() {
