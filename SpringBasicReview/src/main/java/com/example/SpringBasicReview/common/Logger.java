@@ -24,7 +24,7 @@ public class Logger {
 
     @PostConstruct  // 생성된 후 초기화 단계에서 실행
     public void init() {
-        String uuid = UUID.randomUUID().toString();
+        uuid = UUID.randomUUID().toString();
         System.out.println("[" + uuid + "] request scope bean create:" + this);
     }
 
