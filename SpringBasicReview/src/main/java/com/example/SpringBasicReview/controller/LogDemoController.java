@@ -16,14 +16,15 @@ import javax.servlet.http.HttpServletRequest;
 public class LogDemoController {
 
     private final LogDemoService logDemoService;
-    private final ObjectProvider<Logger> loggerProvider;
+    private final Logger logger;
 //     Logger를 주입받는 것이 아닌 Logger를 주입하기 위해 찾는 Lookup이 주입 됨
 
     @GetMapping("log-demo")
     @ResponseBody
     public String logDemo(HttpServletRequest request) {
-        Logger logger = loggerProvider.getObject();
         String requestURL = request.getRequestURL().toString();
+
+        System.out.println("logger = " + logger.getClass());
         logger.setRequestURL(requestURL);
 
         logger.log("controller test");
