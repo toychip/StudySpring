@@ -44,7 +44,7 @@ public class SingletonWithprototypeTest1 {
 
     @Scope("singleton")
     static class ClientBean {
-        
+
         // 싱글톤 내에서 프로토타입을 생성해서 넘길때 매번 생성하길 원하므로 ObjectProvider 도입
         // Spring의 ApplicationContext의 모든 기능이 아니라 스프링 컨테이너에서 prototypebean을 찾아서 반환해줌
         // 찾아주는 기능만 제공
