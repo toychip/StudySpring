@@ -30,7 +30,6 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     // Interceptor
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LogInterceptor())
@@ -39,7 +38,5 @@ public class WebConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/css/**", "*.ico", "/error")
                 .excludePathPatterns("/error-page/**"); // 오류 페이지 경로
                 // 인터셉터는 DispatcherType 같은 것이 없다.
-
-
     }
 }
