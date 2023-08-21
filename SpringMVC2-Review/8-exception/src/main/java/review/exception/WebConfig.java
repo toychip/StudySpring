@@ -3,13 +3,16 @@ package review.exception;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import review.exception.filter.LogFilter;
 import review.exception.interceptor.LogInterceptor;
+import review.exception.resolver.MyHandlerExceptionResolver;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
+import java.util.List;
 
 
 @Configuration
@@ -38,5 +41,10 @@ public class WebConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/css/**", "*.ico", "/error")
                 .excludePathPatterns("/error-page/**"); // 오류 페이지 경로
                 // 인터셉터는 DispatcherType 같은 것이 없다.
+    }
+
+    @Override
+    public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
+        resolvers.add(new MyHandlerExceptionResolver());
     }
 }
