@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import review.exception.api.dto.MemberDto;
+import review.exception.custom_exception.UserException;
 
 @Slf4j
 @RestController
@@ -17,6 +18,10 @@ public class ApiExceptionController {
         }
         if (id.equals("bad")) {
             throw new IllegalArgumentException("잘못된 입력 값");
+        }
+
+        if (id.equals("user-except")) {
+            throw new UserException("사용자 오류");
         }
         return new MemberDto(id, "나의 이름은! " + id);
     }
