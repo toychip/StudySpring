@@ -1,10 +1,13 @@
 package review.exception.api.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import review.exception.api.dto.MemberDto;
+import review.exception.custom_exception.BadRequestException;
 import review.exception.custom_exception.UserException;
 
 @Slf4j
@@ -24,5 +27,16 @@ public class ApiExceptionController {
             throw new UserException("사용자 오류");
         }
         return new MemberDto(id, "나의 이름은! " + id);
+    }
+
+    @GetMapping("/api/response-status-ex1")
+    public String responseStatusEx1() {
+        throw new BadRequestException();
+    }
+
+    @GetMapping("/api/response-status-ex2")
+    public String responseStatusEx2() {
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, // 404
+                "error.bad", new IllegalArgumentException());
     }
 }
