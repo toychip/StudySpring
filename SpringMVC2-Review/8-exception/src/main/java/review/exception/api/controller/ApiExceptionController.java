@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import review.exception.api.dto.MemberDto;
@@ -37,6 +38,12 @@ public class ApiExceptionController {
     @GetMapping("/api/response-status-ex2")
     public String responseStatusEx2() {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, // 404
-                "error.bad", new IllegalArgumentException());
+                "잘못된 요청 오류입니다. ResponseStatusException 사용",
+                new IllegalArgumentException());
+    }
+
+    @GetMapping("/api/default/handler-ex")
+    public String defaultException(@RequestParam Integer data) {
+        return "ok";
     }
 }
