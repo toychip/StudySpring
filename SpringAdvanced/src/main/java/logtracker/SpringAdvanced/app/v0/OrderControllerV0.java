@@ -1,4 +1,4 @@
-package logtracker.SpringAdvanced.v0;
+package logtracker.SpringAdvanced.app.v0;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
