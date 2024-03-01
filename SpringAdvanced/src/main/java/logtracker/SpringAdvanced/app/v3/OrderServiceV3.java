@@ -16,7 +16,7 @@ public class OrderServiceV3 {
 
         TraceStatus status = null;
         try {
-            status = trace.begin("OrderServiceV2.orderItem()");
+            status = trace.begin("OrderServiceV3.orderItem()");
             orderRepositoryV3.save(itemID);
             trace.end(status);
         } catch (Exception e) {
