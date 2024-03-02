@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.SpringBasicReview.singleton.SingletonTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-07-07T11:44:32" hostname="JH-MacBook-Air.local" time="0.007">
+  <properties/>
+  <testcase name="싱글톤 패턴을 적용한 객체 사용" classname="com.example.SpringBasicReview.singleton.SingletonTest" time="0.001"/>
+  <testcase name="스프링 없는 순수한 DI 컨테이너" classname="com.example.SpringBasicReview.singleton.SingletonTest" time="0.001"/>
+  <testcase name="스프링 컨테이너와 싱글톤" classname="com.example.SpringBasicReview.singleton.SingletonTest" time="0.005"/>
+  <system-out><![CDATA[singletonService1 = com.example.SpringBasicReview.singleton.SingletonService@67b355c8
+singletonService2 = com.example.SpringBasicReview.singleton.SingletonService@67b355c8
+call Appconfig.memberService
+call Appconfig.memberRepository
+call Appconfig.memberService
+call Appconfig.memberRepository
+memberService1 = com.example.SpringBasicReview.service.MemberServiceImpl@388623ad
+memberService2 = com.example.SpringBasicReview.service.MemberServiceImpl@91f565d
+call Appconfig.memberService
+call Appconfig.memberRepository
+call Appconfig.orderService
+memberService1 = com.example.SpringBasicReview.service.MemberServiceImpl@3fa21d49
+memberService2 = com.example.SpringBasicReview.service.MemberServiceImpl@3fa21d49
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

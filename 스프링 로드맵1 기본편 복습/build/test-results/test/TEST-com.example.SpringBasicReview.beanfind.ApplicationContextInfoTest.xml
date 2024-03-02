@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.SpringBasicReview.beanfind.ApplicationContextInfoTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-07-07T11:44:32" hostname="JH-MacBook-Air.local" time="0.012">
+  <properties/>
+  <testcase name="애플리케이션 빈 출력하기" classname="com.example.SpringBasicReview.beanfind.ApplicationContextInfoTest" time="0.002"/>
+  <testcase name="모든 빈 출력" classname="com.example.SpringBasicReview.beanfind.ApplicationContextInfoTest" time="0.006"/>
+  <system-out><![CDATA[call Appconfig.memberService
+call Appconfig.memberRepository
+call Appconfig.orderService
+beanDefinitionName = appconfig
+ object = com.example.SpringBasicReview.Appconfig$$EnhancerBySpringCGLIB$$38c6be13@9c73fff
+beanDefinitionName = memberService
+ object = com.example.SpringBasicReview.service.MemberServiceImpl@71cea1b8
+beanDefinitionName = orderService
+ object = com.example.SpringBasicReview.service.OrderServiceImpl@659f226a
+beanDefinitionName = memberRepository
+ object = com.example.SpringBasicReview.repository.MemoryMemberRepository@2e463f4
+beanDefinitionName = getDiscountPolicy
+ object = com.example.SpringBasicReview.discount.RateDiscountPolicy@32ec9c90
+call Appconfig.memberService
+call Appconfig.memberRepository
+call Appconfig.orderService
+beanDefinitionName = org.springframework.context.annotation.internalConfigurationAnnotationProcessor
+ object = org.springframework.context.annotation.ConfigurationClassPostProcessor@6025d790
+beanDefinitionName = org.springframework.context.annotation.internalAutowiredAnnotationProcessor
+ object = org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor@af7e376
+beanDefinitionName = org.springframework.context.annotation.internalCommonAnnotationProcessor
+ object = org.springframework.context.annotation.CommonAnnotationBeanPostProcessor@5dcd0cdf
+beanDefinitionName = org.springframework.context.event.internalEventListenerProcessor
+ object = org.springframework.context.event.EventListenerMethodProcessor@4fb04a72
+beanDefinitionName = org.springframework.context.event.internalEventListenerFactory
+ object = org.springframework.context.event.DefaultEventListenerFactory@1e79d43
+beanDefinitionName = appconfig
+ object = com.example.SpringBasicReview.Appconfig$$EnhancerBySpringCGLIB$$38c6be13@343e225a
+beanDefinitionName = memberService
+ object = com.example.SpringBasicReview.service.MemberServiceImpl@1a07bf6
+beanDefinitionName = orderService
+ object = com.example.SpringBasicReview.service.OrderServiceImpl@4c0e426a
+beanDefinitionName = memberRepository
+ object = com.example.SpringBasicReview.repository.MemoryMemberRepository@713ec32d
+beanDefinitionName = getDiscountPolicy
+ object = com.example.SpringBasicReview.discount.RateDiscountPolicy@34d713a2
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

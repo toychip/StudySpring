@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.SpringBasicReview.service.OrderServiceImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-07-07T11:44:32" hostname="JH-MacBook-Air.local" time="0.0">
+  <properties/>
+  <testcase name="createOrder()" classname="com.example.SpringBasicReview.service.OrderServiceImplTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

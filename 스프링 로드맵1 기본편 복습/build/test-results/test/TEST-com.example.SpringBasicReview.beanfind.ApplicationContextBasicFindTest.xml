@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.SpringBasicReview.beanfind.ApplicationContextBasicFindTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-07-07T11:44:32" hostname="JH-MacBook-Air.local" time="0.018">
+  <properties/>
+  <testcase name="구체 타입으로 조회" classname="com.example.SpringBasicReview.beanfind.ApplicationContextBasicFindTest" time="0.001"/>
+  <testcase name="빈 이름으로 조회 실패" classname="com.example.SpringBasicReview.beanfind.ApplicationContextBasicFindTest" time="0.002"/>
+  <testcase name="빈 이름으로 조회" classname="com.example.SpringBasicReview.beanfind.ApplicationContextBasicFindTest" time="0.0"/>
+  <testcase name="이름 없이 타입으로만 조회" classname="com.example.SpringBasicReview.beanfind.ApplicationContextBasicFindTest" time="0.0"/>
+  <system-out><![CDATA[call Appconfig.memberService
+call Appconfig.memberRepository
+call Appconfig.orderService
+call Appconfig.memberService
+call Appconfig.memberRepository
+call Appconfig.orderService
+call Appconfig.memberService
+call Appconfig.memberRepository
+call Appconfig.orderService
+call Appconfig.memberService
+call Appconfig.memberRepository
+call Appconfig.orderService
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
