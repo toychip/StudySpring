@@ -1,6 +1,7 @@
 package logtracker.SpringAdvanced.trace.strategy;
 
 import logtracker.SpringAdvanced.trace.strategy.code.strategy.ContextV1;
+import logtracker.SpringAdvanced.trace.strategy.code.strategy.Strategy;
 import logtracker.SpringAdvanced.trace.strategy.code.strategy.StrategyLogic1;
 import logtracker.SpringAdvanced.trace.strategy.code.strategy.StrategyLogic2;
 import lombok.extern.slf4j.Slf4j;
@@ -52,4 +53,54 @@ public class ContextV1Test {
         ContextV1 contextV2 = new ContextV1(strategyLogic2);
         contextV2.execute();
     }
+
+    @Test
+    void strategyV2() {
+        Strategy strategyLogic1 = new Strategy() {
+            @Override
+            public void call() {
+                log.info("비즨스 로직1 실행");
+            }
+        };
+        ContextV1 contextV1 = new ContextV1(strategyLogic1);
+        log.info("strategyLogic1={}", strategyLogic1.getClass());
+        contextV1.execute();
+
+        Strategy strategyLogic2 = new Strategy() {
+            @Override
+            public void call() {
+                log.info("비즨스 로직2 실행");
+            }
+        };
+        log.info("strategyLogic2={}", strategyLogic2.getClass());
+        ContextV1 contextV2 = new ContextV1(strategyLogic2);
+        contextV2.execute();
+    }
+
+    @Test
+    void strategyV3() {
+        // 객체 변수를 생성하지 않고 바로 만들어서 주입
+        ContextV1 contextV1 = new ContextV1(new Strategy() {
+            @Override
+            public void call() {
+                log.info("비즨스 로직1 실행");
+            }
+        });
+        contextV1.execute();
+    }
+
+    @Test
+    void strategyV4() {
+        // 인터페이스 함수를 람다로 사용하는 법
+        ContextV1 contextV1 = new ContextV1(() -> log.info("비즨스 로직1 실행"));
+        contextV1.execute();
+
+        ContextV1 contextV2 = new ContextV1(() -> log.info("비즨스 로직1 실행"));
+        contextV2.execute();
+    }
+
+    /**
+     * strategyV2 ~ strategyV4 까지는 조립한 이후 변경하기가 번거롭다.
+     * 먼저 조립을 사용하는 방식보다 더유연하게 전략 패턴을 사용하는 방법이 예제3이다.
+     */
 }
