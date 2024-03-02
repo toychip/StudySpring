@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.SpringBasicReview.domain.MemberServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-07-07T11:44:32" hostname="JH-MacBook-Air.local" time="0.002">
+  <properties/>
+  <testcase name="join()" classname="com.example.SpringBasicReview.domain.MemberServiceTest" time="0.002"/>
+  <system-out><![CDATA[call Appconfig.memberService
+call Appconfig.memberRepository
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

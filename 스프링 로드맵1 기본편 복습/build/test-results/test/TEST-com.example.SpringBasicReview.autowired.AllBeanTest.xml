@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.SpringBasicReview.autowired.AllBeanTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-07-07T11:44:32" hostname="JH-MacBook-Air.local" time="0.066">
+  <properties/>
+  <testcase name="findAllBean()" classname="com.example.SpringBasicReview.autowired.AllBeanTest" time="0.066"/>
+  <system-out><![CDATA[policyMap = {fixDiscountPolicy=com.example.SpringBasicReview.discount.FixDiscountPolicy@1e4c6583, rateDiscountPolicy=com.example.SpringBasicReview.discount.RateDiscountPolicy@2ee48610}
+polices = [com.example.SpringBasicReview.discount.FixDiscountPolicy@1e4c6583, com.example.SpringBasicReview.discount.RateDiscountPolicy@2ee48610]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.SpringBasicReview.lifecycle.BeanLifeCycleTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-07-07T11:44:32" hostname="JH-MacBook-Air.local" time="0.01">
+  <properties/>
+  <testcase name="lifeCycleTest()" classname="com.example.SpringBasicReview.lifecycle.BeanLifeCycleTest" time="0.01"/>
+  <system-out><![CDATA[생성자 호출, url = null
+NetworkClient.init
+connect: http://test-spring.dev
+call: http://test-spring.dev message = 초기화 연결 메시지
+NetworkClient.close
+close: http://test-spring.dev
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

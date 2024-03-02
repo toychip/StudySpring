@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.SpringBasicReview.singleton.StatefulServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-07-07T11:44:32" hostname="JH-MacBook-Air.local" time="0.005">
+  <properties/>
+  <testcase name="statefulServiceSingleton()" classname="com.example.SpringBasicReview.singleton.StatefulServiceTest" time="0.005"/>
+  <system-out><![CDATA[name = userA, price = 10000
+name = userB, price = 20000
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

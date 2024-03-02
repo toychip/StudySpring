@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.SpringBasicReview.autowired.AutoWiredTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-07-07T11:44:32" hostname="JH-MacBook-Air.local" time="0.005">
+  <properties/>
+  <testcase name="AutowiredOption()" classname="com.example.SpringBasicReview.autowired.AutoWiredTest" time="0.005"/>
+  <system-out><![CDATA[setNoBean2 = null
+setNoBean3 = Optional.empty
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

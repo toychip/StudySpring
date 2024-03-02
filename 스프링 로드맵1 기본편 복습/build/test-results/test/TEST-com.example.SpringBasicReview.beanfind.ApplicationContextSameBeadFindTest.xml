@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.SpringBasicReview.beanfind.ApplicationContextSameBeadFindTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-07-07T11:44:32" hostname="JH-MacBook-Air.local" time="0.014">
+  <properties/>
+  <testcase name="타입으로 조회시 같은 타입이 둘 이상 있으면 중복 오류 발생." classname="com.example.SpringBasicReview.beanfind.ApplicationContextSameBeadFindTest" time="0.001"/>
+  <testcase name="특정 타입을 모두 조회하기" classname="com.example.SpringBasicReview.beanfind.ApplicationContextSameBeadFindTest" time="0.001"/>
+  <testcase name="타입으로 조회시 같은 타입이 둘 이상 있으면, 빈 이름을 지정하면 된다" classname="com.example.SpringBasicReview.beanfind.ApplicationContextSameBeadFindTest" time="0.0"/>
+  <system-out><![CDATA[key = memberRepository1
+beansOfType.get(key) = com.example.SpringBasicReview.repository.MemoryMemberRepository@1da4b3f9
+key = memberRepository2
+beansOfType.get(key) = com.example.SpringBasicReview.repository.MemoryMemberRepository@23cbbd07
+beansOfType = {memberRepository1=com.example.SpringBasicReview.repository.MemoryMemberRepository@1da4b3f9, memberRepository2=com.example.SpringBasicReview.repository.MemoryMemberRepository@23cbbd07}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
