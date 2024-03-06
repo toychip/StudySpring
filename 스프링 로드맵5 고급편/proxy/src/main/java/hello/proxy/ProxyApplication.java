@@ -1,6 +1,5 @@
 package hello.proxy;
 
-
 import hello.proxy.config.AppV1Config;
 import hello.proxy.config.AppV2Config;
 import hello.proxy.config.v1_proxy.concrete_proxy.ConcreteProxyConfig;
