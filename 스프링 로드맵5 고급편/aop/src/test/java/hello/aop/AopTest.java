@@ -5,6 +5,7 @@ import hello.aop.order.OrderService;
 import hello.aop.order.aop.AspectV1;
 import hello.aop.order.aop.AspectV2;
 import hello.aop.order.aop.AspectV3;
+import hello.aop.order.aop.AspectV4PointCut;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.Aspect;
 import org.assertj.core.api.Assertions;
@@ -16,7 +17,7 @@ import org.springframework.context.annotation.Import;
 
 @Slf4j
 @SpringBootTest
-@Import(AspectV3.class)
+@Import(AspectV4PointCut.class)
 public class AopTest {
 
     @Autowired
