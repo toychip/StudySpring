@@ -9,6 +9,7 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class AspectV1 {
 
+    // hello.aop.order 패키지와 하위 패키지 전부
     @Around("execution(* hello.aop.order..*(..))")  // point
     public Object doLog(ProceedingJoinPoint joinPoint) throws Throwable{    // Advice
         log.info("[log] {}", joinPoint.getSignature()); // join point 시그니처
