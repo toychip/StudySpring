@@ -7,6 +7,7 @@ import hello.aop.order.aop.AspectV2;
 import hello.aop.order.aop.AspectV3;
 import hello.aop.order.aop.AspectV4PointCut;
 import hello.aop.order.aop.AspectV5Order;
+import hello.aop.order.aop.AspectV6Advice;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.Aspect;
 import org.assertj.core.api.Assertions;
@@ -18,7 +19,8 @@ import org.springframework.context.annotation.Import;
 
 @Slf4j
 @SpringBootTest
-@Import({AspectV5Order.LogAspect.class, AspectV5Order.TxAspect.class})  // 물론 Bean으로 등록해도 됨
+//@Import({AspectV5Order.LogAspect.class, AspectV5Order.TxAspect.class})  // 물론 Bean으로 등록해도 됨
+@Import(AspectV6Advice.class)
 public class AopTest {
 
     @Autowired
