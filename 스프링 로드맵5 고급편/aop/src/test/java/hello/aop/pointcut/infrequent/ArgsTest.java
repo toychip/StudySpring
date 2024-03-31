@@ -1,4 +1,4 @@
-package hello.aop.pointcut;
+package hello.aop.pointcut.infrequent;
 
 import hello.aop.member.MemberServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
