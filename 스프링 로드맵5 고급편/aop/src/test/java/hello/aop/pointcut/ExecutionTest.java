@@ -133,8 +133,87 @@ public class ExecutionTest {
     }
 
     /**
-     * 패키지에서의 차이를 이해해야 한다.
-     * . : 정확하게 해당 위치의 패키지
-     * ..: 해당 위치의 패키지와 그 하위 패키지도 포함
+     * 패키지에서의 차이를 이해해야 한다. . : 정확하게 해당 위치의 패키지 ..: 해당 위치의 패키지와 그 하위 패키지도 포함
+     */
+
+    @Test
+    @DisplayName("helloMethod 는 MemberServiceImpl 클래스 안에 있으므로 당연히 매칭된다.")
+    void typeExactMatch() {
+        pointcut.setExpression("execution(* hello.aop.member.MemberServiceImpl.*(..))");
+        assertThat(pointcut.matches(helloMethod, MemberServiceImpl.class)).isTrue();
+    }
+
+    @Test
+    @DisplayName("MemberServiceImpl와 MemberService는 매칭이 되냐? - 됨")
+    // execution 에서는 MemberService처럼 부모 타입을 선언해도 그 자식 타입은 매칭된다.
+    void typeExactSuperType() {
+        pointcut.setExpression("execution(* hello.aop.member.MemberService.*(..))");
+        assertThat(pointcut.matches(helloMethod, MemberServiceImpl.class)).isTrue();
+    }
+
+    @Test
+    @DisplayName("MemberServiceImpl와 MemberService에서, 부모가 갖고 있는 메서드만 가능함. 자식의 다른 메서드는 불가능함")
+    // 아래 코드는 본인(자식)에서 꺼낸 것이므로 당연히 가능
+    void typeMatchInternal() throws NoSuchMethodException {
+        pointcut.setExpression("execution(* hello.aop.member.MemberServiceImpl.*(..))");
+        Method internalMethod = MemberServiceImpl.class.getMethod("internal", String.class);
+        assertThat(pointcut.matches(internalMethod, MemberServiceImpl.class)).isTrue();
+    }
+
+    @Test
+    @DisplayName("MemberServiceImpl와 MemberService에서, 부모가 갖고 있는 메서드만 가능함. 자식의 다른 메서드는 불가능함")
+    void typeMatchNoSUperTypeMethodFalse() throws NoSuchMethodException {
+        pointcut.setExpression("execution(* hello.aop.member.MemberService.*(..))");
+        Method internalMethod = MemberServiceImpl.class.getMethod("internal", String.class);
+        assertThat(pointcut.matches(internalMethod, MemberServiceImpl.class)).isFalse();
+    }
+
+    // String 타입의 파라미터 허용
+    // (String)
+
+    @Test
+    void argsMatch() {
+        pointcut.setExpression("execution(* *(String))");
+        assertThat(pointcut.matches(helloMethod, MemberServiceImpl.class)).isTrue();
+    }
+
+    @Test
+    void argsMatchNoArgs() {
+        pointcut.setExpression("execution(* *())");
+        assertThat(pointcut.matches(helloMethod, MemberServiceImpl.class)).isFalse();
+    }
+
+    @Test
+    // (Xxx)
+    @DisplayName("정확히 하나의 파라미터 허용, 모든 타입 허용")
+    void argsMatchStar() {
+        pointcut.setExpression("execution(* *(*))");
+        assertThat(pointcut.matches(helloMethod, MemberServiceImpl.class)).isTrue();
+    }
+
+    @Test
+    // (), (Xxx), (Xxx, Xxx)
+    @DisplayName("숫자와 무관하게 모든 파라미터, 모든 타입 허용")
+    void argsMatchAll() {
+        pointcut.setExpression("execution(* *(..))");
+        assertThat(pointcut.matches(helloMethod, MemberServiceImpl.class)).isTrue();
+    }
+
+    @Test
+    // (String), (String, Xxx), (String, Xxx, Xxx)
+    @DisplayName("String 타입으로 시작, 숫자와 무관하게 모든 파라미터, 모든 타입 허용")
+    void argsMatchAllString() {
+        pointcut.setExpression("execution(* *(String, ..))");
+        assertThat(pointcut.matches(helloMethod, MemberServiceImpl.class)).isTrue();
+    }
+    /**
+     * execution 파라미터 매칭 규칙은 다음과 같다.
+     * (String): 정확하게 String 타입 파라미터
+     * ():파라미터가 없어야 한다
+     * (*): 정확히 하나의 파라미터, 단 모든 타입을 허용한다.
+     * (*, *): 정확히 두 개의 파라미터, 단 모든 타입을 허용한다.
+     * (..): 숫자와 무관하게 모든 파라미터, 모든 타입을 허용한다. 참고로 파라미터가 없어도 된다. '0..*'로 이해하면 된다.
+     * (String, ..): String 타입으로 시작해야 한다. 숫자와 무관하게 모든 파라미터, 모든 타입을 허용한다.
+     *  - 예) (String), (String, Xxx), (String, Xxx, Xxx) 허용
      */
 }
