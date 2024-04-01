@@ -1,5 +1,6 @@
 package hello.aop.exam;
 
+import hello.aop.exam.annotation.Retry;
 import hello.aop.exam.annotation.Trace;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +14,7 @@ public class ExamRepository {
      * 실패할 때 AOP로 복구하도록 설정
      */
     @Trace
+    @Retry(value = 4)
     public String save(String itemId) {
         seq++;
         if (seq % 5 == 0) {
