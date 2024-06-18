@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.example.stock.domain.Stock;
 import com.example.stock.repository.StockRepository;
+import jakarta.transaction.Transactional;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -17,14 +18,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 class StockServiceTest {
 
     @Autowired
-    private StockService stockService;
+    private PessimisticLockStockService stockService;
 
     @Autowired
     private StockRepository stockRepository;
 
     @BeforeEach
+    @Transactional
     public void before() {
-        stockRepository.saveAndFlush(new Stock(1L, 100L));
+        Stock stock = new Stock(1L, 100L);
+        stockRepository.saveAndFlush(stock);
+        System.out.println(stock.getId() + "생성");
     }
 
     @AfterEach
@@ -69,7 +73,9 @@ class StockServiceTest {
 
         latch.await();
 
-        Stock stock = stockRepository.findById(1L).orElseThrow();
+        Stock stock = stockRepository.findById(1L).orElseThrow(
+                () -> new RuntimeException("id로 찾을 수 없음")
+        );
         // 100 - (1 * 100) == 0
         assertEquals(stock.getQuantity(), 0);
 
