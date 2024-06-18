@@ -1,7 +1,7 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
     properties:
       hibernate:
@@ -11,6 +11,8 @@ spring:
     url: jdbc:mysql://localhost:3306/stock_example
     username: root
     password: 12345678
+    hikari:
+      maximum-pool-size: 40
 
 logging:
   level:
