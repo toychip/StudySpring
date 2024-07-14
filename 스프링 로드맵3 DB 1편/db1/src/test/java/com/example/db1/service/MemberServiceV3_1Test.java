@@ -1,7 +1,8 @@
-package com.example.service;
+package com.example.db1.service;
 
 import com.example.db1.domain.Member;
 import com.example.db1.repository.MemberRepositoryV3;
+import com.example.service.MemberServiceV3_1;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -19,23 +20,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
- * 트랜잭션 - 트랜잭션 템플릿
+ * 트랜잭션 - 트랜잭션 매니저
  */
-class MemberServiceV3_2Test {
+class MemberServiceV3_1Test {
 
     public static final String MEMBER_A = "memberA";
     public static final String MEMBER_B = "memberB";
     public static final String MEMBER_EX = "ex";
 
     private MemberRepositoryV3 memberRepository;
-    private MemberServiceV3_2 memberService;
+    private MemberServiceV3_1 memberService;
 
     @BeforeEach
     void before() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource(URL, USERNAME, PASSWORD);
         memberRepository = new MemberRepositoryV3(dataSource);
         PlatformTransactionManager transactionManager = new DataSourceTransactionManager(dataSource);
-        memberService = new MemberServiceV3_2(transactionManager, memberRepository);
+        memberService = new MemberServiceV3_1(transactionManager, memberRepository);
     }
 
     @AfterEach

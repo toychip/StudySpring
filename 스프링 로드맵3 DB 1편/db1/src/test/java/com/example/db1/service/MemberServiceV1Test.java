@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.db1.service;
 
 import static com.example.db1.connection.ConnectionConst.PASSWORD;
 import static com.example.db1.connection.ConnectionConst.URL;
@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.example.db1.domain.Member;
 import com.example.db1.repository.MemberRepositoryV1;
+import com.example.service.MemberServiceV1;
 import java.sql.SQLException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
