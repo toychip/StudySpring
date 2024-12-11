@@ -1,0 +1,27 @@
+server:
+  port: 8000
+
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: apigateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: first-service
+          url: http://localhost:8081/
+          # 조건절, 단순 조건이고 8081뒤에 'first-service'가 자동으로 붙지 않음
+          predicates:
+            - Path=/fist-service/**
+
+        - id: second-service
+          url: http://localhost:8082/
+          # 조건절
+          predicates:
+            - Path=/second-service/**
