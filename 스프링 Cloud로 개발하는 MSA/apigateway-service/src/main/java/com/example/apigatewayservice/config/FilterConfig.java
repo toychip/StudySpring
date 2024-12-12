@@ -26,7 +26,7 @@ public class FilterConfig {
      *  위와 같은 내용
      */
 
-    @Bean
+//    @Bean
     public RouteLocator gateWayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route(r -> r.path("/first-service/**")
