@@ -3,7 +3,7 @@ server:
 
 eureka:
   instance:
-    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     register-with-eureka: true
     fetch-registry: true
@@ -13,3 +13,6 @@ eureka:
 spring:
   application:
     name: user-service
+
+greeting:
+  message: Welcome to th Simple E-Commere

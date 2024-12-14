@@ -3,8 +3,8 @@ server:
 
 eureka:
   client:
-    fetch-registry: false
-    register-with-eureka: false
+    fetch-registry: true
+    register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8761/eureka
 
@@ -22,7 +22,7 @@ spring:
 
       routes:
         - id: first-service
-          url: http://localhost:8081/
+          url: lb://MY_FIRST_SERVICE
           # 조건절, 단순 조건이고 8081뒤에 'first-service'가 자동으로 붙지 않음
           predicates:
             - Path=/fist-service/**
@@ -31,7 +31,9 @@ spring:
 #            - AddResponseHeader=first-response, first-response-header2
             - CustomFilter
         - id: second-service
-          url: http://localhost:8082/
+#          url: http://localhost:8082/
+          # 직접 8081로 가는 것이 아닌 Ureka Server에 물어봄
+          url: lb://MY_SECOND_SERVICE
           # 조건절
           predicates:
             - Path=/second-service/**
