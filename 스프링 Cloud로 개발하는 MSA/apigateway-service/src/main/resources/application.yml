@@ -21,8 +21,13 @@ spring:
             postLogger: true
 
       routes:
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/**
+
         - id: first-service
-          url: lb://MY_FIRST_SERVICE
+          uri: lb://MY_FIRST_SERVICE
           # 조건절, 단순 조건이고 8081뒤에 'first-service'가 자동으로 붙지 않음
           predicates:
             - Path=/fist-service/**
@@ -33,7 +38,7 @@ spring:
         - id: second-service
 #          url: http://localhost:8082/
           # 직접 8081로 가는 것이 아닌 Ureka Server에 물어봄
-          url: lb://MY_SECOND_SERVICE
+          uri: lb://MY_SECOND_SERVICE
           # 조건절
           predicates:
             - Path=/second-service/**
