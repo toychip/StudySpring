@@ -26,6 +26,11 @@ spring:
           predicates:
             - Path=/user-service/**
 
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE
+          predicates:
+            - Path=/catalog-service/**
+
         - id: first-service
           uri: lb://MY_FIRST_SERVICE
           # 조건절, 단순 조건이고 8081뒤에 'first-service'가 자동으로 붙지 않음
