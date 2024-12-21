@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/12865. 평범한 배낭" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1407. 2로 몇 번 나누어질까" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1520. 내리막 길" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1753. 최단경로" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1937. 욕심쟁이 판다" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/19942. 다이어트" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/2589. 보물섬" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/7576. 토마토" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/9251. LCS" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

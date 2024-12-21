@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/14568. 2017 연세대학교 프로그래밍 경시대회" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1816. 암호 키" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/19532. 수학은 비대면강의입니다" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/6996. 애너그램" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
